@@ -15,5 +15,9 @@ public class bukuMain21 {
         buku21 bk2 = new buku21("Self Reward", "Maheera Ayesha", 160, 29, 59000);
         bk2.terjual(11);
         bk2.tampilInformasi();
+
+        buku21 nathanael = new buku21("About Starr", "Nathanael", 256, 20, 88000);
+        nathanael.terjual(18);
+        nathanael.tampilInformasi();
     }
 }
