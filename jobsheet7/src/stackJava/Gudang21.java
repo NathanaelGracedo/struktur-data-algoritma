@@ -61,14 +61,27 @@ public class Gudang21 {
         }
     }
 
+    // public void tampilkanBarang() {
+    //     if (!cekKosong()) {
+    //         System.out.println("Rincian tumpukan barang di Gudang:");
+    //         for (int i = 0; i <= top; i++) {
+    //             System.out.printf("Kode %d: %s (Kategori %s)\n", tumpukan[i].kode, tumpukan[i].nama,
+    //                     tumpukan[i].kategori);
+    //         }
+    //     } else {
+    //         System.out.println("Tumpukan barang kosong");
+    //     }
+    // }      
+
     public void tampilkanBarang() {
         if (!cekKosong()) {
             System.out.println("Rincian tumpukan barang di Gudang:");
-            for (int i = 0; i <= top; i++) {
+            for (int i = top; i >= 0; i--) {
                 System.out.printf("Kode %d: %s (Kategori %s)\n", tumpukan[i].kode, tumpukan[i].nama, tumpukan[i].kategori);
             }
         } else {
             System.out.println("Tumpukan barang kosong");
         }
     }
+    
 }
