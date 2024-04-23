@@ -18,7 +18,10 @@ public class Main21 {
             System.out.println("2. Ambil Barang");
             System.out.println("3. Lihat barang teratas");
             System.out.println("4. Tampilkan tumpukan barang");
-            System.out.println("5. Keluar");
+            System.out.println("5. Lihat barang terbawah");
+            System.out.println("6. Cari barang");
+            System.out.println("7. Keluar");
+
             System.out.print("Pilih operasi: ");
             int pilihan = scanner.nextInt();
             scanner.nextLine();
@@ -45,9 +48,19 @@ public class Main21 {
                     gudang.tampilkanBarang();
                     break;
                 case 5:
+                    gudang.lihatBarangTerbawah();
+                    break;
+                case 6:
+                    System.out.print("Masukkan kode barang yang ingin dicari: ");
+                    int kodeCari = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Masukkan nama barang yang ingin dicari: ");
+                    String namaCari = scanner.nextLine();
+                    gudang.cariBarang(kodeCari, namaCari);
+                    break;
+                case 7:
                     scanner.close();
                     System.exit(0);
-                    break;
                 default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi");
             }
