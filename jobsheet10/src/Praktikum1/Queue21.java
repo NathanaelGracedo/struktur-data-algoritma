@@ -1,7 +1,5 @@
 package Praktikum1;
 
-import javax.swing.text.StyledEditorKit;
-
 public class Queue21 {
     int[] data;
     int front;
@@ -83,7 +81,11 @@ public class Queue21 {
         }
    }
 
-    11
+    public int Dequeue() {
+        int dt = 0;
+        if (IsEmpty()) {
+            System.out.println("Queue masih kosong");
+            return 0;
         } else {
             dt = data[front];
             size--;
