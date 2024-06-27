@@ -68,4 +68,23 @@ public class Graph21 {
         }
         System.out.println("Gedung " + (char) ('A' + asal) + " dan " + (char) ('A' + tujuan) + " tidak bertetangga");
     }
+
+    void updateJarak(int asal, int tujuan, int jarakBaru) throws Exception {
+        boolean edgeFound = false;
+        for (int i = 0; i < list[asal].size(); i++) {
+            if (list[asal].get(i) == tujuan) {
+                list[asal].getJarak(i);
+                edgeFound = true;
+                break;
+            }
+        }
+    }
+
+    int hitungEdge() {
+        int totalEdge = 0;
+        for (int i = 0; i < vertex; i++) {
+            totalEdge += list[i].size();
+        }
+        return totalEdge;
+    }
 }
