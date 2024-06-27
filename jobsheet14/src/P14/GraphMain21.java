@@ -2,7 +2,7 @@ package P14;
 
 import java.util.Scanner;
 
-public class Graphmain26 {
+public class GraphMain21 {
     public static void main(String[] args) throws Exception {
         Graph21 gedung = new Graph21(6);
         gedung.addEdge(0, 1, 50); // A -> B
