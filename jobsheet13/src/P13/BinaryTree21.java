@@ -3,22 +3,22 @@ package P13;
 public class BinaryTree21 {
     Node21 root;
     int size;
- 
+
     public BinaryTree21() {
         root = null;
         size = 0;
     }
- 
+
     public boolean isEmpty() {
         return root == null;
     }
- 
+
     public void add(int data) {
         if (this.isEmpty()) {
             root = new Node21(null, data, null);
             return;
         }
- 
+
         Node21 current = root;
         while (true) {
             if (data > current.data) {
@@ -38,15 +38,15 @@ public class BinaryTree21 {
             }
         }
     }
- 
+
     public boolean find(int data) {
         boolean result = false;
         Node21 current = root;
         while (current != null) {
-            if (current.data != data) {
+            if (current.data == data) {
                 result = true;
                 break;
-            } else if (data > current.data) {
+            } else if (data < current.data) {
                 current = current.left;
             } else {
                 current = current.right;
@@ -54,7 +54,7 @@ public class BinaryTree21 {
         }
         return result;
     }
- 
+
     public void traversePreOrder(Node21 node) {
         if (node != null) {
             System.out.print(node.data + " ");
@@ -62,7 +62,7 @@ public class BinaryTree21 {
             traversePreOrder(node.right);
         }
     }
- 
+
     public void traversePostOrder(Node21 node) {
         if (node != null) {
             traversePostOrder(node.left);
@@ -70,7 +70,7 @@ public class BinaryTree21 {
             System.out.print(node.data + " ");
         }
     }
- 
+
     public void traverseInOrder(Node21 node) {
         if (node != null) {
             traverseInOrder(node.left);
@@ -78,7 +78,7 @@ public class BinaryTree21 {
             traverseInOrder(node.right);
         }
     }
- 
+
     public Node21 getSuccessor(Node21 del) {
         Node21 successor = del.right;
         Node21 successorParent = del;
@@ -92,7 +92,7 @@ public class BinaryTree21 {
         }
         return successor;
     }
- 
+
     public void delete(int data) {
         if (isEmpty()) {
             System.out.println("Tree is empty");
@@ -118,7 +118,7 @@ public class BinaryTree21 {
             System.out.println("Couldn't find data");
             return;
         }
- 
+
         if (current.left == null && current.right == null) {
             if (current == root) {
                 root = null;
@@ -162,5 +162,80 @@ public class BinaryTree21 {
             }
             successor.left = current.left;
         }
+    }
+
+    public void addRecursive(int data) {
+        root = addRecursive(root, data);
+    }
+
+    private Node21 addRecursive(Node21 node, int data) {
+        if (node == null) {
+            return new Node21(null, data, null);
+        }
+
+        if (data < node.data) {
+            node.left = addRecursive(node.left, data);
+        } else if (data > node.data) {
+            node.right = addRecursive(node.right, data);
+        }
+
+        return node;
+    }
+
+    public void findMinMax() {
+        if (isEmpty()) {
+            System.out.println("Tree is empty");
+            return;
+        }
+
+        Node21 minNode = findMin(root);
+        Node21 maxNode = findMax(root);
+
+        System.out.println("Minimum value in the tree: " + minNode.data);
+        System.out.println("Maximum value in the tree: " + maxNode.data);
+    }
+
+    private Node21 findMin(Node21 node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    private Node21 findMax(Node21 node) {
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node;
+    }
+
+    public void displayLeafNodes() {
+        System.out.print("Leaf nodes: ");
+        displayLeafNodes(root);
+        System.out.println();
+    }
+
+    private void displayLeafNodes(Node21 node) {
+        if (node != null) {
+            if (node.left == null && node.right == null) {
+                System.out.print(node.data + " ");
+            }
+            displayLeafNodes(node.left);
+            displayLeafNodes(node.right);
+        }
+    }
+
+    public int countLeafNodes() {
+        return countLeafNodes(root);
+    }
+
+    private int countLeafNodes(Node21 node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.left == null && node.right == null) {
+            return 1;
+        }
+        return countLeafNodes(node.left) + countLeafNodes(node.right);
     }
 }
